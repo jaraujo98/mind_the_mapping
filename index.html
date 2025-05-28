@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Mind the Mapping: How Motion Retargeting Choices Impact Sim2Real Success
+    </title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <!-- <header>
+      <nav>
+        <ul>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#method">Method</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#baselines">Baselines</a></li>
+          <li><a href="#experiments">Experiments</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
+        </ul>
+      </nav>
+    </header> -->
+
+    <main>
+      <section class="hero">
+        <h1>Mind the Mapping</h1>
+        <h2>How Motion Retargeting Choices Impact Sim2Real Success</h2>
+        <div class="authors">
+          <p>João Pedro Araújo, Pei Xu, Yanjie Ze, Jiajun Wu, Karen Liu</p>
+        </div>
+        <div class="button-container">
+          <a href="" target="_blank" class="button">
+            <i class="fas fa-file-alt"></i> Coming soon!
+          </a>
+          <a href="#" target="_blank" class="button">
+            <i class="fab fa-github"></i> Coming soon!
+          </a>
+        </div>
+      </section>
+
+      <section id="introduction" class="section">
+        <h2>Introduction</h2>
+        <p>
+          In this work, we investigate the impact of motion retargeting choices
+          on the success of humanoid policies learned from human motion data.
+          The pipeline commonly used for training humanoid policies starts with
+          previously collected human motion data, retargets it to the robot,
+          uses reinforcement learning to train a motion tracking control policy,
+          and finally deploy it zero-shot in the real world. Our hypothesis is
+          that the retargeting step greatly affects the success of the RL policy
+          when deployed to the real world.
+        </p>
+      </section>
+
+      <section id="method" class="section">
+        <h2>Our Method</h2>
+        <div class="method-details">
+          <div class="method-image">
+            <img src="assets/method.png" alt="Our method visualization" />
+          </div>
+          <div class="method-description">
+            <p>
+              Our proposed retargeting method minimizes the displayed objective
+              function at each frame. The first term encourages the retargeted
+              motion to maintain the overall look of the human motion. The
+              second term preserves the balance state in human motion. Finally,
+              the third term ensures the foot-ground contact consistency.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="results" class="section">
+        <h2>Retargeting Results</h2>
+        <p>
+          In this section we show some results of applying our method to convert
+          some motions in SMPL format to a Unitree G1 robot.
+        </p>
+        <h3 class="video-title">Walking slowly</h3>
+        <div class="video-grid">
+          <div class="video-container">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/smpl_mesh_walking_slow02_stageii.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/retarget_KIT_3_walking_slow02_stageii_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <h3 class="video-title">Walking</h3>
+        <div class="video-grid">
+          <div class="video-container">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/smpl_mesh_walking_medium04_stageii.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/retarget_KIT_3_walking_medium04_stageii_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <h3 class="video-title">Walking fast</h3>
+        <div class="video-grid">
+          <div class="video-container">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/smpl_mesh_walking_fast05_stageii.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/retarget_KIT_3_walking_fast05_stageii_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <h3 class="video-title">Running</h3>
+        <div class="video-grid">
+          <div class="video-container">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/smpl_mesh_walking_run04_stageii.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/retarget_KIT_3_walking_run04_stageii_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <h3 class="video-title">Turn</h3>
+        <div class="video-grid">
+          <div class="video-container">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/smpl_mesh_LeftTurn02_stageii.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/retarget_KIT_9_LeftTurn02_stageii_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <h3 class="video-title">Spot turn</h3>
+        <div class="video-grid">
+          <div class="video-container">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/smpl_mesh_turn_left01_stageii.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/retarget_KIT_9_turn_left01_stageii_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <h3 class="video-title">Walk in a clockwise circle</h3>
+        <div class="video-grid">
+          <div class="video-container">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/smpl_mesh_WalkInClockwiseCircle01_stageii.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/retarget_KIT_9_WalkInClockwiseCircle01_stageii_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <h3 class="video-title">Walk backwards</h3>
+        <div class="video-grid">
+          <div class="video-container">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/smpl_mesh_WalkingStraightBackwards02_stageii.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/our_retargeting_all_motions/retarget_KIT_9_WalkingStraightBackwards02_stageii_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <section id="baselines" class="section">
+        <h2>Baselines</h2>
+        <p>
+          We compare our method to other retargeting methods, which we describe
+          below.
+        </p>
+        <br />
+        <div class="baseline">
+          <h3>Naïve</h3>
+          <p>
+            Naïve retargeting directly copies the joint angles from the source
+            motion to the robot. This can result in severe foot pose artifacts,
+            as shown in the video below. Another issue is the end-effector drift
+            due to link length mismatch between the human and the robot.
+          </p>
+          <div class="video-grid">
+            <div class="video-container">
+              <video controls>
+                <source
+                  src="assets/walking_forward_retargeted/smpl_mesh_video.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="video-container-mujoco">
+              <video controls>
+                <source
+                  src="assets/walking_forward_retargeted/retarget_naive_video.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="baseline">
+          <h3>ScaledIK</h3>
+          <p>
+            Scaled IK is a multi-step pipeline that starts by fitting a SMPL
+            body model to the humanoid robot. The pose parameters from the
+            original motion are then fed through this robot SMPL model, and
+            gradient-based inverse kinematics is used to track the joint
+            positions in global space. Solving position based optimization can
+            occasionaly lead to undesirable local minima, resulting in
+            discontinuities in root orientation.
+          </p>
+          <div class="video-grid">
+            <div class="video-container">
+              <video controls>
+                <source
+                  src="assets/walking_forward_retargeted/smpl_mesh_video.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="video-container-mujoco">
+              <video controls>
+                <source
+                  src="assets/walking_forward_retargeted/retarget_scaled_ik_video.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="baseline">
+          <h3>ScaledIK+</h3>
+          <p>
+            To address the shortcomings of ScaledIK, we modify the original
+            pipeline to use a differential inverse kinematics approach that
+            deals correctly with the root orientation. We call this modified
+            baseline ScaledIK+. Doing that change fixes the root problems.
+          </p>
+          <div class="video-grid">
+            <div class="video-container">
+              <video controls>
+                <source
+                  src="assets/walking_forward_retargeted/smpl_mesh_video.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="video-container-mujoco">
+              <video controls>
+                <source
+                  src="assets/walking_forward_retargeted/retarget_scaled_ik_plus_video.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+          <br />
+          <p>
+            However, if we look at a slowed down version of the retargeted
+            motion, we notice severe jitter artifacts.
+          </p>
+          <div class="video-grid">
+            <div class="video-container-mujoco">
+              <video controls>
+                <source
+                  src="assets/walking_forward_retargeted/retarget_scaled_ik_plus_original_fps_video.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+          <br />
+          <p>
+            This can be attributed to the fact that inverse kinematics is about
+            satisfying Cartesian constraints, which have nonlinear dependencies
+            on the bone lenghts, making them non-invariant to bone scaling.
+          </p>
+          <br />
+          <p>
+            Moreover, the SMPL model is not expressive enough to perfectly fit
+            the robot joints, as shown in the image below. This creates several
+            local minima, resulting in a very noisy motion.
+          </p>
+          <br />
+          <div class="method-image">
+            <img
+              src="assets/fit_smpl_to_robots.png"
+              alt="Joint positions for SMPL body models fit to different robot skeletons"
+            />
+          </div>
+          <br />
+          <p>
+            <b>Our core insight</b> is to scale the constraints themselves
+            rather than the skeleton, which results in a more natural looking
+            retargeted motion.
+          </p>
+        </div>
+
+        <div class="baseline">
+          <h3>UniScaling</h3>
+          <p>
+            Finally, we study the importance of tracking the center of mass by
+            ablating that term from our method. We call the resulting baseline
+            UniScaling.
+          </p>
+          <div class="video-grid">
+            <div class="video-container">
+              <video controls>
+                <source
+                  src="assets/walking_forward_retargeted/smpl_mesh_video.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="video-container-mujoco">
+              <video controls>
+                <source
+                  src="assets/walking_forward_retargeted/retarget_uniscaling_video.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+          <br />
+          <p>
+            While it may seem that ablating the center of mass term has no
+            effect, it becomes obvious when looking at the motion side-by-side.
+            Notice how, at the last frame, the motion retargeted taking the
+            center of mass into account leans slightly backward. While this
+            might be considered worse than the upright pose returned by the
+            UniScaling method, we show later that this makes a considerable
+            difference in sim2real performance.
+          </p>
+          <div class="video-grid">
+            <div class="video-container-mujoco">
+              <video controls>
+                <source
+                  src="assets/walking_forward_retargeted/retarget_uniscaling_side_video.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="video-container-mujoco">
+              <video controls>
+                <source
+                  src="assets/walking_forward_retargeted/retarget_balance_aware_side_video.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experiments" class="section">
+        <h2>Experiments</h2>
+        <h3>Setup</h3>
+        <p>
+          Our experimental pipeline is illustrated below. We start with a source
+          motion dataset, and retarget it using each of the methods described
+          previously. Then, for each retargeted motion dataset, we train a
+          motion tracking policy in simulation using reinforcement learning.
+          This policy is evaluated in another simulator, a test we called
+          sim2sim transfer. If sim2sim transfer is successful, we deploy the
+          policy to the real world. All policies are trained with identical RL
+          algorithm and settings. The policy deployment protocols are also
+          identical across different retargeting methods.
+        </p>
+        <br />
+        <div class="method-image">
+          <img src="assets/experiment_setup.png" alt="Our experimental setup" />
+        </div>
+        <br />
+
+        <br />
+        <h2>Results</h2>
+        <br />
+        <div class="method-image">
+          <img src="assets/results_table.png" alt="Results table" />
+        </div>
+        <br />
+        <p>
+          This table shows the results in the training simulator, the evaluation
+          simulator, and the real world. We measure the tracking accuracy and
+          the completion rate in the training simulator. The completion rate is
+          the percentage of motion clips the policy can track without falling
+          before the end of the rollout. During sim2sim transfer, we measure the
+          survival rate of a policy by letting the simulation and the policy
+          continue to run after the reference motion has reached the last frame.
+          This allows us to measure if the policy can keep the robot balanced at
+          the end of each motion clip.
+        </p>
+        <br />
+        <p>
+          We see that all policies can achieve perfect completion rates in the
+          training simulator. However, our method is the only one capable of
+          keeping the robot balanced at all time in the evaluation simulator.
+        </p>
+
+        <br />
+        <h3>Naïve</h3>
+        <p>
+          We start by looking at the performance of the policy trained on the
+          data retargeted using the naïve method. Notice how the robot struggles
+          to maintain balance at the end of the reference motion, and eventually
+          falls down.
+        </p>
+        <br />
+        <div class="video-grid">
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/walking_forward_retargeted/retarget_naive_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/sim2real_proxy_rollout_videos/rollout_naive_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <br />
+        <p>
+          Due to the low survival rate, we did not test this policy in the real
+          world.
+        </p>
+
+        <br />
+        <h3>ScaledIK</h3>
+        <p>
+          ScaledIK achieves a higher survival rate, consistent with what was
+          seen in prior work. However, we see that the root tends to deviate
+          noticeable from the reference motion.
+        </p>
+        <br />
+        <p>
+          Here we show two rollouts for the ScaledIK policy: one successful, and
+          one failed. Notice how the policy adopts a very unnatural gait pattern
+          on the first rollout. On the second rollout, we see the policy having
+          trouble maintaining balance after deviating considerably from the
+          reference motion.
+        </p>
+        <br />
+        <div class="video-grid">
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/walking_forward_retargeted/retarget_scaled_ik_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/sim2real_proxy_rollout_videos/rollout_scaled_ik_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div class="video-grid">
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/scaled_ik_failure/retarget_scaled_ik_failure_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/scaled_ik_failure/rollout_scaled_ik_failure_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <br />
+        <p>
+          We hand-picked a walk-forward clip where the policy succeeded in
+          simulation to deploy to the real world. We see the unnatural gait seen
+          previously in simulation, as well as a deviation from the forward
+          direction.
+        </p>
+        <br />
+        <div class="video-container-mujoco">
+          <video controls>
+            <source
+              src="assets/real_world/scaled_ik_real.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <br />
+        <h3>ScaledIK+</h3>
+        <p>
+          ScaledIK+ achieves better tracking results, but its survival rates are
+          lower than the one achieved by ScaledIK. The rollouts in simulation
+          for the ScaledIK+ baseline no longer display the unnatural gait seen
+          in ScaledIK, but struggle to balance at the end of the clip.
+        </p>
+        <div class="video-grid">
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/walking_forward_retargeted/retarget_scaled_ik_plus_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/sim2real_proxy_rollout_videos/rollout_scaled_ik_plus_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <br />
+        <p>
+          When deployed to the real world the policy tends to deviate
+          considerably from the reference root trajectory.
+        </p>
+        <br />
+        <video controls style="width: 100%">
+          <source
+            src="assets/real_world/scaled_ik_plus_real.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+
+        <br />
+        <br />
+        <h3>Uniscaling</h3>
+        <p>
+          UniScaling and ScaledIK+ both perform similarly in terms of tracking
+          error of tracking error and survival rate. Like ScaledIK+, it
+          struggles to maintain balance after the reference motion has ended.
+        </p>
+
+        <div class="video-grid">
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/walking_forward_retargeted/retarget_uniscaling_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-container-mujoco">
+            <video controls>
+              <source
+                src="assets/sim2real_proxy_rollout_videos/rollout_uniscaling_video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+        <br />
+        <p>
+          We still see some deviation from the forward direction when deploying
+          to the real world.
+        </p>
+        <br />
+        <video controls style="width: 100%">
+          <source
+            src="assets/real_world/uniscaling_real.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+
+        <br />
+        <br />
+        <h3>Tracking accuracy</h3>
+        <p>
+          In the video below we see the root trajectories of the reference
+          motions and the rollout trajectories for each of the policies.
+        </p>
+        <br />
+        <video controls style="width: 100%">
+          <source src="assets/rollout_video_in_line.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        <br />
+        <p>
+          All the baseline tracking results are equally bad. Ours is the only
+          one that tracks well, and achieves 100% success rate in the real world
+        </p>
+
+        <br />
+        <h3>Our method</h3>
+        <p>
+          In addition to the perfect survival rate in simulation, our method can
+          successfully track a sequence composed from shorter motions, as shown
+          in this video. Here, the robot is tracking 9 different motions played
+          one after the other, combined by linearly interpolating the last and
+          first frames of consecutive motions over half a second. Note that the
+          policy was not trained in composite clips, nor has it seen any kind of
+          between-clip blending during training.
+        </p>
+        <br />
+        <video controls style="width: 100%">
+          <source
+            src="assets/real_world/our_method_long_sequence.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+
+        <br />
+        <br />
+        <h3>Bonus: Performance for real time applications</h3>
+        <p>
+          Finally, our method is also fast enough to be used in applications
+          that require real time retargeting, such as the teleoperation example
+          shown in this video.
+        </p>
+        <br />
+        <video controls style="width: 100%">
+          <source
+            src="assets/real_world/teleop_example_anon.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <p>
+          Video source:
+          <a href="https://yanjieze.com/TWIST/"
+            >TWIST: Teleoperated Whole-Body Imitation System</a
+          >
+        </p>
+      </section>
+      <section id="conclusion" class="section">
+        <h2>Conclusion</h2>
+        <p>
+          We surveyed existing retargeting approaches to leverage human motion
+          data for robot control policy learning, and introduced a new
+          balance-aware retargeting algorithm. Our algorithm is suited to both
+          offline and online retargeting applications. We find that uniform
+          scaling to ensure consistent contact states and fulfilling the balance
+          state condition are crucial to obtain control-friendly retargeted
+          motions for policy training. The policy trained on the data retargeted
+          using our balance-aware method systematically achieves equal or higher
+          success rates, lower tracking errors, and better real world
+          performance than the tested baselines.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 The Movement Lab. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
